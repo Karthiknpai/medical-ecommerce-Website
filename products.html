@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        /* CSS Styles */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 200px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product h2 {
+            margin-top: 0;
+        }
+
+        .product button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our Online Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <div class="product-container" id="products">
+    </div>
+
+    <script>
+        // JavaScript functionality
+        const cart = [];
+        const products = [
+            { name: "Face Mask",  price: 20, image: "product-image1.jpg" },
+            { name: "Forehead IR Thermometer",  price: 499, image: "product-image2.jpg" },
+            { name: "PPE Kit",  price: 349, image: "product-image3.jpg" },
+            { name: "First-Aid Kit",  price: 296, image: "product-image4.jpg" },
+            { name: "Thermometer",  price: 99, image: "product-image5.jpg" },
+            { name: "Sphygmomano-meter",  price: 999, image: "product-image6.webp" },
+            { name: "Blood testing slips",  price: 120, image: "product-image7.jpg" },
+            { name: "Gluecose (Energy-Drink)",  price: 65, image: "product-image8.png" },
+            { name: "Chloroprene gloves",  price: 25, image: "product-image9.jpg" },
+            { name: "Blood Bag",  price: 22, image: "product-image10.jpg" },
+            { name: "Pulse oximeter",  price: 179, image: "product-image11.jpg" },
+            { name: "Stethoscope",  price: 1590, image: "product-image12.jpg" },
+
+            // Add more products as needed
+        ];
+
+        const productsContainer = document.getElementById('products');
+
+        // Function to create product elements
+        function createProductElement(product) {
+            const productElement = document.createElement('div');
+            productElement.className = 'product';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = product.image;
+            imgElement.alt = product.name;
+
+            const h2Element = document.createElement('h2');
+            h2Element.textContent = product.name;
+
+            const pDescription = document.createElement('p');
+            pDescription.textContent = product.description;
+
+            const pPrice = document.createElement('p');
+            pPrice.textContent = `Price: ${product.price}Rs`;
+
+            const addToCartButton = document.createElement('button');
+            addToCartButton.className = 'add-to-cart';
+            addToCartButton.textContent = 'Add to Cart';
+            addToCartButton.addEventListener('click', () => {
+                cart.push(product.name);
+                alert(`${product.name} product-added to cart!`);
+            });
+
+            const buyNowButton = document.createElement('button');
+            buyNowButton.className = 'buy-now';
+            buyNowButton.textContent = 'Buy Now';
+            buyNowButton.addEventListener('click', () => {
+                alert(`${product.name} product-order placed successfully!`);
+            });
+
+            productElement.appendChild(imgElement);
+            productElement.appendChild(h2Element);
+            productElement.appendChild(pDescription);
+            productElement.appendChild(pPrice);
+            productElement.appendChild(addToCartButton);
+            productElement.appendChild(buyNowButton);
+
+            return productElement;
+        }
+
+        // Function to render products
+        function renderProducts() {
+            products.forEach(product => {
+                const productElement = createProductElement(product);
+                productsContainer.appendChild(productElement);
+            });
+        }
+
+        // Call renderProducts to populate the page with products
+        renderProducts();
+    </script>
+</body>
+</html>
