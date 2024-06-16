@@ -15,7 +15,9 @@ python -m venv venv
 source venv/bin/activate   # On Windows use `venv\Scripts\activate`
 
 pip install selenium
+
 pip install webdriver-manager
+
 pip install python-dotenv
 
 
