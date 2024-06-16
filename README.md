@@ -12,6 +12,7 @@ Before running the Selenium script, ensure you have the following installed:
    ```sh
 
 python -m venv venv
+
 source venv/bin/activate   # On Windows use `venv\Scripts\activate`
 
 pip install selenium
